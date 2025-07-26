@@ -1,3 +1,6 @@
+import { ContributionCalculator } from '@services/ContributionCalculator.js';
+import { Tooltip } from './Tooltip.js';
+
 export class ExampleSquaresRenderer {
   selectors = {
     exampleSquares: '.examples__list .square',
@@ -15,6 +18,18 @@ export class ExampleSquaresRenderer {
   }
 
   squareClickHandler = (evt) => {
-    // this.showExampleTooltip();
+    const { currentTarget } = evt;
+
+    const colorLevel = parseInt(currentTarget.dataset.color) || 0; // 0 - 4
+    const contributionCount = ContributionCalculator.getContributionDescription(colorLevel);
+    this.showExampleTooltip(currentTarget, contributionCount);
   };
+
+  showExampleTooltip(square, contributionCount) {
+    const event = new CustomEvent(Tooltip.eventNames.show, {
+      bubbles: true,
+      detail: { contributionCount },
+    });
+    square.dispatchEvent(event);
+  }
 }

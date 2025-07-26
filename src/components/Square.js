@@ -1,6 +1,7 @@
 import { ContributionCalculator } from '@services/ContributionCalculator.js';
 import { DateService } from '@services/DateService.js';
 import { DomUtils } from '@utils/DomUtils.js';
+import { Tooltip } from './Tooltip.js';
 
 export class Square {
   constructor(contributionLevel = 0, contributionData = []) {
@@ -40,8 +41,24 @@ export class Square {
   }
 
   handleClick = () => {
-    // this.showTooltip();
+    this.showTooltip();
   };
+
+  showTooltip() {
+    const [date] = this.contributionData;
+    const square = this.getElement();
+
+    const formattedDate = DateService.formatDateForDisplay(date); // Прим.: Понедельник, December 16, 2024
+    const contributionCount = ContributionCalculator.getContributionDescription(
+      this.contributionLevel,
+    );
+
+    const event = new CustomEvent(Tooltip.eventNames.show, {
+      bubbles: true,
+      detail: { contributionCount, date: formattedDate, datetime: date },
+    });
+    square.dispatchEvent(event);
+  }
 
   getSquareMarkup(contributionLevel, ariaLabel) {
     return `

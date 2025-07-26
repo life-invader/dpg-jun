@@ -1,4 +1,5 @@
 import { CalendarApp } from '@components/CalendarApp';
+import { Tooltip } from '@components/Tooltip';
 
 export class App {
   constructor() {
@@ -9,6 +10,7 @@ export class App {
   init() {
     try {
       this.calendarApp = new CalendarApp();
+      this.tooltipPlugin = new Tooltip();
       this.isInitialized = true;
 
       console.debug('[App]: Приложение успешно запущено');
