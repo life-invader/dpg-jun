@@ -6,7 +6,7 @@ export class App {
     this.isInitialized = false;
   }
 
-  async init() {
+  init() {
     try {
       this.calendarApp = new CalendarApp();
       this.isInitialized = true;
