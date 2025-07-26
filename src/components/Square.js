@@ -37,11 +37,16 @@ export class Square {
     );
 
     this.element = squareElement;
+    this.element.instance = this;
     this.attachEventListeners();
 
     return squareElement;
   }
 
+  /**
+   * Возвращает DOM-элемент квадрата
+   * @returns {HTMLLIElement} Элемент квадрата
+   */
   getElement() {
     return this.element;
   }
@@ -82,9 +87,29 @@ export class Square {
     square.dispatchEvent(event);
   }
 
+  /**
+   * Возвращает HTML-разметку квадрата
+   * @param {string} contributionLevel - Уровень вклада в виде строки
+   * @param {string} ariaLabel - Описание для aria-label
+   * @returns {string} HTML-разметка квадрата
+   */
   getSquareMarkup(contributionLevel, ariaLabel) {
     return `
       <li data-color="${contributionLevel}" tabindex="0" aria-label="${ariaLabel}" class="square"></li>
     `;
+  }
+
+  /**
+   * Устанавливает активное состояние для квадрата
+   */
+  setActiveState() {
+    this.element.classList.add('square--active');
+  }
+
+  /**
+   * Удаляет активное состояние у квадрата
+   */
+  removeActiveState() {
+    this.element.classList.remove('square--active');
   }
 }

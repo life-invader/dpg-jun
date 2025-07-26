@@ -8,15 +8,47 @@ import { Square } from './Square.js';
  * Отвечает за создание и управление сеткой квадратов контрибьютов
  */
 export class CalendarGrid {
+  /**
+   * Селекторы для элементов сетки календаря
+   * @type {{square: string, squaresContainer: string, monthsContainer: string}}
+   */
   selectors = {
+    square: '.square',
     squaresContainer: '.squares',
     monthsContainer: '.months',
   };
 
+  /**
+   * Создает экземпляр CalendarGrid и инициализирует DOM-элементы и обработчики событий
+   */
   constructor() {
     this.squaresContainer = document.querySelector(this.selectors.squaresContainer);
     this.monthsContainer = document.querySelector(this.selectors.monthsContainer);
+    this.activeSquare = null;
+
+    this.attachEventListeners();
   }
+
+  /**
+   * Привязывает обработчики событий к документу
+   */
+  attachEventListeners() {
+    document.addEventListener('click', this.documentClickHandler);
+  }
+
+  /**
+   * Обработчик клика по документу для управления активным квадратом
+   * @param {MouseEvent} evt - Событие клика
+   */
+  documentClickHandler = (evt) => {
+    this.activeSquare?.instance?.removeActiveState();
+    const closestSquare = evt.target.closest(this.selectors.square);
+
+    if (closestSquare) {
+      closestSquare.instance?.setActiveState();
+      this.activeSquare = closestSquare;
+    }
+  };
 
   /**
    * Создает сетку календаря для заданного диапазона дат
