@@ -35,7 +35,9 @@ module.exports = (_env, argv) => {
       historyApiFallback: true,
     },
     plugins: [
-      new Dotenv(),
+      new Dotenv({
+        systemvars: true,
+      }),
       new HtmlWebpackPlugin({
         filename: 'index.html',
         template: 'src/index.html',
