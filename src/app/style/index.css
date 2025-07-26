@@ -1,0 +1,29 @@
+@import './fonts.css';
+@import './vars.css';
+
+/* Reset */
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+ul,
+ol {
+  list-style: none;
+}
+
+/* Common */
+body {
+  font-family: var(--fontInter);
+  font-size: 12px;
+  line-height: 1.25;
+  font-weight: 400;
+  color: var(--colorDustyGray);
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

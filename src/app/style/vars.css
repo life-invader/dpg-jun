@@ -1,0 +1,26 @@
+:root {
+  /* Common */
+  --squareSize: 15px;
+  --squareGap: 2px;
+  --weekWidth: calc(var(--squareSize) + var(--squareGap));
+
+  /* Fonts */
+  --fontInter: 'Inter', sans-serif;
+
+  /* Colors */
+  --colorWhite: #fff;
+  --colorBlack: #000;
+
+  --colorDustyGray: #959494;
+  --colorGallery: #ededed;
+  --colorPerano: #acd5f2;
+  --colorGlacier: #7fa8c9;
+  --colorWedgewood: #527ba0;
+  --colorAstronaut: #254e77;
+  --colorBoulder: #7c7c7c;
+  --colorAqua: #00ffff;
+
+  /* Alpha colors */
+  --colorBlackA50: rgba(0, 0, 0, 0.5);
+  --colorBlackA90: rgba(0, 0, 0, 0.9);
+}

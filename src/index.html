@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="description" content="Тестовое задание на Frontend разработчика в Digital Partners Global">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="preload" href="../public/fonts/Inter_24pt-Regular.woff2" as="font" type="font/woff2" crossorigin>
+  <title>Github Graph</title>
+</head>
+
+<body>
+
+  <div class="graph">
+    <div class="loader"></div>
+
+    <ul class="months" aria-label="Месяцы">
+      <!-- Месяцы -->
+    </ul>
+
+    <ul class="days" aria-label="Дни недели">
+      <li class="days__item">Пн</li>
+      <li class="days__item days__item--hidden">Вт</li>
+      <li class="days__item">Ср</li>
+      <li class="days__item days__item--hidden">Чт</li>
+      <li class="days__item">Пт</li>
+      <li class="days__item days__item--hidden">Сб</li>
+      <li class="days__item days__item--hidden">Вс</li>
+    </ul>
+
+    <ul class="squares" aria-label="Дни контрибьютов">
+      <!-- Для квадратиков -->
+    </ul>
+
+    <div class="examples" aria-label="Примеры дней контрибьютов">
+      <p class="examples__text">Меньше</p>
+
+      <ul class="examples__list">
+        <li class='examples__list-item square' data-color=0 aria-label="Пример дня контрибьютов. Нет контрибьютов"></li>
+        <li class='examples__list-item square' data-color=1 aria-label="Пример дня контрибьютов. 1-9 контрибьютов"></li>
+        <li class='examples__list-item square' data-color=2 aria-label="Пример дня контрибьютов. 10-19 контрибьютов">
+        </li>
+        <li class='examples__list-item square' data-color=3 aria-label="Пример дня контрибьютов. 20-29 контрибьютов">
+        </li>
+        <li class='examples__list-item square' data-color=4 aria-label="Пример дня контрибьютов. 30+ контрибьютов"></li>
+      </ul>
+
+      <p class="examples__text">Больше</p>
+    </div>
+  </div>
+</body>
+
+</html>
