@@ -3,6 +3,9 @@ import { DAYS_365_MS } from '@constants/index';
 import { CalendarGrid } from './CalendarGrid';
 import { ExampleSquaresRenderer } from './ExampleSquaresRenderer';
 
+/**
+ * Главный класс приложения календаря контрибьютов
+ */
 export class CalendarApp {
   constructor() {
     this.loader = document.querySelector('.loader');
@@ -15,6 +18,9 @@ export class CalendarApp {
     this.init();
   }
 
+  /**
+   * Инициализирует работу класса
+   */
   async init() {
     try {
       await this.loadContributionData(); // загрузка контрибьютов по api
@@ -26,6 +32,9 @@ export class CalendarApp {
     }
   }
 
+  /**
+   * Загружает данные о контрибьютах
+   */
   async loadContributionData() {
     try {
       this.contributionData = await this.dataService.fetchContributionData();
@@ -36,6 +45,9 @@ export class CalendarApp {
     this.removeLoader();
   }
 
+  /**
+   * Создает карту контрибьютов
+   */
   createCalendar() {
     const today = new Date();
     const startDate = new Date(today.getTime() - DAYS_365_MS); // 356 дней назад

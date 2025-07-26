@@ -1,6 +1,10 @@
 import { ContributionCalculator } from '@services/ContributionCalculator.js';
 import { Tooltip } from './Tooltip.js';
 
+/**
+ * Класс для отображения примеров квадратов
+ * Отвечает за создание и управление примерами квадратов контрибьютов
+ */
 export class ExampleSquaresRenderer {
   selectors = {
     exampleSquares: '.examples__list .square',
@@ -11,6 +15,9 @@ export class ExampleSquaresRenderer {
     this.attachEventListeners();
   }
 
+  /**
+   * Привязывает обработчики событий к примерам квадратов
+   */
   attachEventListeners() {
     this.exampleSquares.forEach((square) => {
       square.addEventListener('click', this.squareClickHandler);
@@ -25,6 +32,11 @@ export class ExampleSquaresRenderer {
     this.showExampleTooltip(currentTarget, contributionCount);
   };
 
+  /**
+   * Показывает подсказку для примера квадрата
+   * @param {HTMLElement} square - Элемент квадрата
+   * @param {string} description - Описание уровня вкладов
+   */
   showExampleTooltip(square, contributionCount) {
     const event = new CustomEvent(Tooltip.eventNames.show, {
       bubbles: true,

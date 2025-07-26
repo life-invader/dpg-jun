@@ -1,6 +1,17 @@
+/**
+ * Сервис для получения данных о вкладах с удалённого API.
+ */
 export class DataService {
+  /**
+   * URL API для получения данных о вкладах.
+   * @type {string}
+   */
   apiUrl = process.env.API_URL;
 
+  /**
+   * Асинхронно получает данные о вкладах с API.
+   * @returns {Promise<Object>} Объект с данными о вкладах или пустой объект в случае ошибки.
+   */
   async fetchContributionData() {
     try {
       const response = await fetch(this.apiUrl);

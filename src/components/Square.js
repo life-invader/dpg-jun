@@ -3,7 +3,15 @@ import { DateService } from '@services/DateService.js';
 import { DomUtils } from '@utils/DomUtils.js';
 import { Tooltip } from './Tooltip.js';
 
+/**
+ * Класс для представления квадрата контрибьюта
+ * Отвечает за создание и управление отдельным квадратом
+ */
 export class Square {
+  /**
+   * @param {number} contributionLevel - Уровень вкладов (0-4)
+   * @param {Array} contributionData - Данные о вкладах [дата, количество]
+   */
   constructor(contributionLevel = 0, contributionData = []) {
     this.contributionLevel = contributionLevel;
     this.contributionData = contributionData;
@@ -11,6 +19,10 @@ export class Square {
     this.element = this.createElement();
   }
 
+  /**
+   * Создает DOM-элемент квадрата с aria-атрибутами для доступности
+   * @returns {HTMLLIElement} Элемент квадрата
+   */
   createElement() {
     const [date] = this.contributionData;
     const formattedDate = DateService.formatDateForDisplay(date);
@@ -34,16 +46,26 @@ export class Square {
     return this.element;
   }
 
+  /**
+   * Привязывает обработчики событий к квадрату
+   */
   attachEventListeners() {
     if (!this.element) return;
 
     this.element.addEventListener('click', this.handleClick);
   }
 
+  /**
+   * Обработчик клика по квадрату
+   * @param {Event} event - Событие клика
+   */
   handleClick = () => {
     this.showTooltip();
   };
 
+  /**
+   * Показывает подсказку с информацией о вкладах
+   */
   showTooltip() {
     const [date] = this.contributionData;
     const square = this.getElement();

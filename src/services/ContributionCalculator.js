@@ -1,4 +1,11 @@
+/**
+ * Класс для вычисления уровня вклада пользователя на основе количества его вкладов.
+ */
 export class ContributionCalculator {
+  /**
+   * Геттер для пороговых значений уровней вклада.
+   * @returns {{HIGH: number, MEDIUM: number, LOW: number, MINIMAL: number}} Объект с порогами для каждого уровня.
+   */
   static get CONTRIBUTION_THRESHOLDS() {
     return {
       HIGH: 30,
@@ -8,6 +15,11 @@ export class ContributionCalculator {
     };
   }
 
+  /**
+   * Вычисляет уровень вклада на основе количества вкладов.
+   * @param {number} contributionCount - Количество вкладов пользователя.
+   * @returns {number} Уровень вклада (0 - нет, 1 - минимальный, 2 - низкий, 3 - средний, 4 - высокий).
+   */
   static calculateContributionLevel(contributionCount) {
     const { HIGH, MEDIUM, LOW, MINIMAL } = ContributionCalculator.CONTRIBUTION_THRESHOLDS;
 
@@ -19,6 +31,11 @@ export class ContributionCalculator {
     return 0;
   }
 
+  /**
+   * Возвращает текстовое описание уровня вклада.
+   * @param {number} level - Уровень вклада (0-4).
+   * @returns {string} Описание уровня вклада.
+   */
   static getContributionDescription(level) {
     const descriptions = {
       0: 'No',
